@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Categories
 
 def index(request):
     return render(request,'index.html')
 
 def about(request):
-    return render(request,'about.html')
+    dict_cat = {
+            'category': Categories.objects.all()
+    }
+    return render(request,'about.html', dict_cat)
 
 def booking(request):
     return render(request,'booking.html')
